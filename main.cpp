@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "cfg.h"
 
 DECLARE_COMPONENT_VERSION(
 	"Party Shuffle",

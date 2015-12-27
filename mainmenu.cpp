@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "cfg.h"
 
 static const GUID cfg_partyshuffle_enabled_guid = { 0xbdac777, 0x735c, 0x440d,{ 0x8c, 0x71, 0x49, 0xb6, 0xac, 0xff, 0xce, 0xb8 } };
 cfg_bool cfg_partyshuffle_enabled(cfg_partyshuffle_enabled_guid, false);
