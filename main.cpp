@@ -70,6 +70,7 @@ class PartyShuffleInit : public initquit {
 public:
 
 	void on_init() {
+		srand(static_cast<unsigned int>(time(NULL)));
 		new PartyShuffle();
 	}
 
