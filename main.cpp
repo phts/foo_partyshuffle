@@ -3,7 +3,7 @@
 DECLARE_COMPONENT_VERSION(
 	"Party Shuffle",
 	"1.0.0",
-	u8"Party Shuffle\n\nAdds a Party Shuffle mode to foobar2000.\n\nhttps://github.com/phts/foo_partyshuffle\n© 2018 Phil Tsaryk"
+	u8"Party Shuffle\n\nhttps://github.com/phts/foo_partyshuffle\n© 2018 Phil Tsaryk"
 );
 VALIDATE_COMPONENT_FILENAME("foo_partyshuffle.dll");
 
