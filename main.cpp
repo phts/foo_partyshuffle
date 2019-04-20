@@ -23,29 +23,30 @@ private:
 
 		int list_size = static_cast<int>(all_items.get_count());
 
+		t_size last_track_index = playlist_manager_service->activeplaylist_get_item_count();
+
 		for (int i = 0; i < 10; i++) {
 			int track_index = rand() % list_size;
 			metadb_handle_ptr item = all_items[track_index];
-			add_track_to_current_playlist(item);
+			insert_track_to_current_playlist(last_track_index, item);
 		}
 
 		if (playback_control_service->get_stop_after_current() == FALSE) {
-			start_playback();
+			start_playback(last_track_index);
 		}
 	}
 
-	void add_track_to_current_playlist(metadb_handle_ptr item) {
-		t_size item_count = playlist_manager_service->activeplaylist_get_item_count();
-
+	void insert_track_to_current_playlist(t_size position, metadb_handle_ptr item) {
 		pfc::list_t<metadb_handle_ptr> item_to_add;
 		item_to_add.add_item(item);
 
 		bit_array_bittable selection;
 
-		playlist_manager_service->activeplaylist_insert_items(item_count, item_to_add, selection);
+		playlist_manager_service->activeplaylist_insert_items(position, item_to_add, selection);
 	}
 
-	void start_playback() {
+	void start_playback(t_size position) {
+		playlist_manager_service->activeplaylist_set_focus_item(position);
 		service_ptr_t<StartPlaybackCallback> callback_serv = new service_impl_t<StartPlaybackCallback>();
 		main_thread_callback_manager_service->add_callback(callback_serv);
 	}
@@ -60,7 +61,7 @@ private:
 	class StartPlaybackCallback : public main_thread_callback {
 	public:
 		void callback_run() {
-			static_api_ptr_t<playback_control>()->next();
+			static_api_ptr_t<playback_control>()->start();
 		}
 	};
 };
