@@ -24,8 +24,9 @@ private:
 		int list_size = static_cast<int>(all_items.get_count());
 
 		for (int i = 0; i < 10; i++) {
-			int random_index = rand() % list_size;
-			add_track_to_current_playlist(all_items, random_index);
+			int track_index = rand() % list_size;
+			metadb_handle_ptr item = all_items[track_index];
+			add_track_to_current_playlist(item);
 		}
 
 		if (playback_control_service->get_stop_after_current() == FALSE) {
@@ -33,11 +34,11 @@ private:
 		}
 	}
 
-	void add_track_to_current_playlist(pfc::list_t<metadb_handle_ptr> all_items, int track_index) {
+	void add_track_to_current_playlist(metadb_handle_ptr item) {
 		t_size item_count = playlist_manager_service->activeplaylist_get_item_count();
 
 		pfc::list_t<metadb_handle_ptr> item_to_add;
-		item_to_add.add_item(all_items[track_index]);
+		item_to_add.add_item(item);
 
 		bit_array_bittable selection;
 
