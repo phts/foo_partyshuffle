@@ -34,15 +34,14 @@ private:
 	}
 
 	void add_track_to_current_playlist(pfc::list_t<metadb_handle_ptr> all_items, int track_index) {
-		t_size active_playlist = playlist_manager_service->get_active_playlist();
-		t_size item_count = playlist_manager_service->playlist_get_item_count(active_playlist);
+		t_size item_count = playlist_manager_service->activeplaylist_get_item_count();
 
 		pfc::list_t<metadb_handle_ptr> item_to_add;
 		item_to_add.add_item(all_items[track_index]);
 
 		bit_array_bittable selection;
 
-		playlist_manager_service->playlist_insert_items(active_playlist, item_count, item_to_add, selection);
+		playlist_manager_service->activeplaylist_insert_items(item_count, item_to_add, selection);
 	}
 
 	void start_playback() {
