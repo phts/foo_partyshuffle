@@ -19,7 +19,9 @@ If *Stop after current* is on in this case then only new tracks will be added an
 
 2. Download [VM with Windows 7](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and run in VirtualBox.
 
-3. Install [Visual Studio Community 2017](https://visualstudio.microsoft.com/vs/express/). Select _Desktop development with C++_ and ensure these components are selected:
+3. Install [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+
+4. Select _Desktop development with C++_ and ensure these components are selected:
 
     - Platform Toolset v141
     - Windows 10 SDK
@@ -36,3 +38,10 @@ If *Stop after current* is on in this case then only new tracks will be added an
 3. Download [WTL for VS2017](https://github.com/allenk/WTL-Wizard-VS2017) and unzip.
 
 4. Open `foo_partyshuffle.sln` and add `WTL/Include` folder into _Include Directories_ for `foo_partyshuffle` and `foobar2000_ATL_helpers` projects: mouse right button on the project → Properties → VC++ Directories → Include Directories.
+
+5. Update project's SDK version to actual: mouse right button on _foo\_partyshuffle_ project → Properties → General → Windows SDK Version.
+
+## Useful links
+
+* [Download Visual Studio 2017 Web Installer](https://developerinsider.co/download-visual-studio-2017-web-installer-iso-community-professional-enterprise/)
+* [Mismatch Detected for 'RuntimeLibrary'](https://stackoverflow.com/questions/14714877/mismatch-detected-for-runtimelibrary)
